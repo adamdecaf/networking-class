@@ -27,3 +27,15 @@ Web & HTTP
 - Know these for the quiz
 - 2.1: Review Question's [1, 3, 10, 11, 12, 13, 15, 16]
 - 2.1: Problems: [P1a-e, P3, P4, P5, P7, P8, P13, P14, P15, P18]
+
+## Socket Programming
+
+- What is a socket?
+-- An interface between an operating system's resources and the networking hardware that can
+-- send and receive messages to and from another application process.
+
+-TCP
+-- Reliable, in order, transfer of bytes between client and server.
+
+-UDP
+-- Unreliable, out of order, transfer
