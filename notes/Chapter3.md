@@ -50,8 +50,6 @@ Reliable Data Transport 3.0
 - and keep track of retransmits
 - set of FSM's that wait for the ack on the packet to be ACK'd to continue back on the next packet.
 
-.... Something
-
 TCP Round Trip Time and Timeout
 
 - Setting the timeout
@@ -102,3 +100,11 @@ SYN -> SYN ACK -> ACK
 -- client gets the ACK and a FIN and sends an ACK back to the server
 -- (server can start this too)
 FIN -> (ACK, FIN) -> ACK
+
+TCP Congestion Control
+- It works
+
+TCP Fairness
+- AIMD
+
+END
