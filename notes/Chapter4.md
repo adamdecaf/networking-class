@@ -33,10 +33,11 @@ Forwarding: Sending a packet along to an interface or to the router.
 
 Link-State routing algorithm
 - global knowledge shared by broadcasts
-- c(x,y): link cost from node from x to y (if there's no link, infinite)
-- D(v): current value of cost of path from source to dest v
-- p(v): predecessor node along path from source to v
-- N': set of nodes whose least cost path is definitely known
+
+    c(x,y): link cost from node from x to y (if there's no link, infinite)
+    D(v): current value of cost of path from source to dest v
+    p(v): predecessor node along path from source to v
+    N': set of nodes whose least cost path is definitely known
 
 Dijstra's Algorithm
 - When you boot you only know who you are connected to.
@@ -66,3 +67,9 @@ Dijstra's Algorithm
     23                  previous[v] := u ;
     24                  decrease-key v in Q;                        // Reorder v in the Queue
     25      return dist;
+
+Distance Vector Algorithm
+
+    d_x(y): cost of least-cost path from x to y
+    then
+    d_x(y) = min_v { c(x,y) + d_v(y) } // Minimum of the routers you know about
