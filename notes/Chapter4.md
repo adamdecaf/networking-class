@@ -39,7 +39,7 @@ Link-State routing algorithm
     p(v): predecessor node along path from source to v
     N': set of nodes whose least cost path is definitely known
 
-Dijstra's Algorithm
+Dijstra's Algorithm (Link State)
 - When you boot you only know who you are connected to.
 
     1  function Dijkstra(Graph, source):
@@ -73,3 +73,16 @@ Distance Vector Algorithm
     d_x(y): cost of least-cost path from x to y
     then
     d_x(y) = min_v { c(x,y) + d_v(y) } // Minimum of the routers you know about
+
+BGP - Border Gateway Protocol
+- eBGP: Obtain information from neihboring ASs (external BGP)
+- iBGP: Propagate reachability information to all internal routers (internal BGP)
+- Sessions: Exchanging messages to other peers
+-- AS-PATH: Contains ASs through which prefix advertisement has passed
+-- NEXT-HOP: Indicated specific internal-AS router to next hop AS.
+
+BGP Messages
+- OPEN: Opens TCP connection to peer and auth sender
+- UPDATE: advertises new path
+- KEEPALIVE: Keep the connecion alive in the absence of UPDATES
+- NOTIFICATION: Reports errors in pervious msg. (Also used to close the connection)
