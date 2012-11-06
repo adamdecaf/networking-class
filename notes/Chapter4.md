@@ -74,6 +74,11 @@ Distance Vector Algorithm
     then
     d_x(y) = min_v { c(x,y) + d_v(y) } // Minimum of the routers you know about
 
+Distance Vector (Bellman-Ford) Algorithm
+- When a link's cost improves it doesn't take long to propagate and finish updating all router tables.
+- When a link's cost decreases it takes longer to propagate and finish updating all router tables. (count to infinity problem)
+- Poisoned Reverse: Tell that a route is shitty when it actually is.
+
 BGP - Border Gateway Protocol
 - eBGP: Obtain information from neihboring ASs (external BGP)
 - iBGP: Propagate reachability information to all internal routers (internal BGP)
@@ -86,3 +91,25 @@ BGP Messages
 - UPDATE: advertises new path
 - KEEPALIVE: Keep the connecion alive in the absence of UPDATES
 - NOTIFICATION: Reports errors in pervious msg. (Also used to close the connection)
+
+
+# Test Material
+- :: 6th Edition
+- Chapter 3
+-- TCP Fairness, Slow start, AIMD (my bandwidth vs your bandwidth)
+-- Congestion control: Tahoe vs Reno
+- Chapter 4
+-- Forwarding vs routing
+-- Virtual circuts (draw a circut diagram)
+-- Switching Fabrics
+-- IP Layout (But no IPv6) (only 4.4.1 and 4.4.2)
+-- Routing Algorithms: Distance Vector and Link State
+-- Netmasks and CIDR
+-- Packet Fragmentation (8 byte bounries) (Happens at the IP level, so TCP header is fragmented too) (only one TCP header, multiple IP headers)
+--- Question: Two routers with a different MSS, what do the packets look like at the final
+--- Only the first packet has the TCP header, but each fragment has an IP header
+--- Target host is the only one that reassembles anything.
+
+    A ------O---------O---------------- B
+       MTU       MTU      What do you
+     1000-ish  700-ish    see here?
