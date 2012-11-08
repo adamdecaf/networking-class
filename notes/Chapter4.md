@@ -124,6 +124,6 @@ BGP Messages
 
                             Packet Sizes: 512, 512, 376 (Remember, 20 byte IP header)
 
-                            Flags:
+                            Flags: (3 bits for flags, 3 flags)
                             Fragmented - True (Turned off on last packet)
-                            Offset - 0, 64, 128
+                            Offset - 0, 64, 128 (13 bits of space, so multiples of 8 are used.)
