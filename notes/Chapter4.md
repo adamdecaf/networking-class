@@ -92,7 +92,6 @@ BGP Messages
 - KEEPALIVE: Keep the connecion alive in the absence of UPDATES
 - NOTIFICATION: Reports errors in pervious msg. (Also used to close the connection)
 
-
 # Test Material
 - :: 6th Edition
 - Chapter 3
@@ -113,3 +112,18 @@ BGP Messages
     A ------O---------O---------------- B
        MTU       MTU      What do you
      1000-ish  700-ish    see here?
+
+
+    H1                                          H2
+    |        R1           R2          R3        |
+    |       |  |         |  |        |  |       |
+    --------   -----------  ----------  ---------
+     ETH / IP   FDDI / IP    PPP / IP    ETH / IP
+     MTU=1500   MTU=1400     MTU=532     MTU=532
+                            (3 packets) (3 packets)
+
+                            Packet Sizes: 512, 512, 376 (Remember, 20 byte IP header)
+
+                            Flags:
+                            Fragmented - True (Turned off on last packet)
+                            Offset - 0, 64, 128
