@@ -21,38 +21,45 @@ IP does not deal with ports, but TCP and UDP do handle ports. UDP/TCP is built u
 
 Note: UDP is used in most streaming communications. Because you can drop a frame here and there and the eye won't matter.
 
-Internet Checksum
-- Adds up the numbers in one's compliment to then wrap around the extra bit to be added to the result of the previous result.
+## Internet Checksum
 
-IP Packets are not reliable, so how do we make communications on them reliable?
-- Attempt to use reliable layers (senders and receivers) with unreliable layers to send data.
+*  Adds up the numbers in one's compliment to then wrap around the extra bit to be added to the result of the previous result.
 
-Reliable Data Transport 1.0
-- Assume everything is fine and we just send and recieve
+## IP Packets are not reliable, so how do we make communications on them reliable?
 
-Reliable Data Transport 2.0
-- Corruption
--- ACK (acknowledgement)
--- NAK (negative acknowledgement)
-- Uses these (along with an FSM to build up)
+* Attempt to use reliable layers (senders and receivers) with unreliable layers to send data.
 
-Reliable Data Transport 2.1
-- What if the ACK or NAK are corrupted?
--- Sequence numbers. (0 or 1) to signal so the receiver knows if this is a retransmitted packet or not.
+### Reliable Data Transport 1.0
 
-Reliable Data Transport 2.2
-- NAK less protocol
-- Instead of sending a NAK you can send an ACK for the last packet received.
+* Assume everything is fine and we just send and recieve
 
-Reliable Data Transport 3.0
-- underlying channel can loose packets (data or ACK's)
-- So.... we can introduce a timer
-- and keep track of retransmits
-- set of FSM's that wait for the ack on the packet to be ACK'd to continue back on the next packet.
+### Reliable Data Transport 2.0
+
+* Corruption
+* ACK (acknowledgement)
+* NAK (negative acknowledgement)
+* Uses these (along with an FSM to build up)
+
+### Reliable Data Transport 2.1
+
+*  What if the ACK or NAK are corrupted?
+* Sequence numbers. (0 or 1) to signal so the receiver knows if this is a retransmitted packet or not.
+
+### Reliable Data Transport 2.2
+
+* NAK less protocol
+* Instead of sending a NAK you can send an ACK for the last packet received.
+
+### Reliable Data Transport 3.0
+
+* underlying channel can loose packets (data or ACK's)
+* So.... we can introduce a timer
+* and keep track of retransmits
+* set of FSM's that wait for the ack on the packet to be ACK'd to continue back on the next packet.
 
 TCP Round Trip Time and Timeout
 
-- Setting the timeout
+### Setting the timeout
 
     EstimateRTT = (1 - a) * EstimatedRTT + a * SampleRTT
     Typically, a = 0.125
@@ -63,28 +70,32 @@ TCP Round Trip Time and Timeout
 
     TimeoutInterval  = EstimatedRTT + 4 * DevRTT
 
-TCP Reliable Data Transfer
-- TCP creates reliability ontop of IP's unreliable service.
-- Pipelined segments
-- Cumulative acks (one ack can work for all previous packets)
-- TCP uses a single retransmission timer
-- retransmits are triggered by: timeout events or duplicate acks
+### TCP Reliable Data Transfer
 
-Vocab
-- Flow control: Not sending too many packets to the receiver
-- Congestion Control: Not sending too many packets over the link
+* TCP creates reliability ontop of IP's unreliable service.
+* Pipelined segments
+* Cumulative acks (one ack can work for all previous packets)
+* TCP uses a single retransmission timer
+* retransmits are triggered by: timeout events or duplicate acks
 
-TCP sender events
-- Data rcvd from app
--- Create segment with seq number
--- seq number if byte-stream number of first data byte in segment
--- start timer if not already running
-- timeout
--- restransmit segment that cased a timeout
+### Vocab
 
-TCP Flow Control
-- Don't send too many packets to the receiver
-- Buffer size is sent along TCP packets to tell the other party how much to send
+* Flow control: Not sending too many packets to the receiver
+* Congestion Control: Not sending too many packets over the link
+
+### TCP sender events
+
+* Data rcvd from app
+* Create segment with seq number
+* seq number if byte-stream number of first data byte in segment
+* start timer if not already running
+* timeout
+* restransmit segment that cased a timeout
+
+## TCP Flow Control
+
+* Don't send too many packets to the receiver
+* Buffer size is sent along TCP packets to tell the other party how much to send
 
 TCP Connection Management
 
